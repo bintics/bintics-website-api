@@ -1,0 +1,8 @@
+/web-app/vendor
+/web-app/node_modules
+/web-app/public/storage
+/web-app/Homestead.yaml
+/web-app/Homestead.json
+/web-app/.env
+
+/web-app/public/bower_components

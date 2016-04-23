@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es-mx',
 
     /*
     |--------------------------------------------------------------------------
@@ -156,6 +156,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Forms & HTML: https://laravelcollective.com/docs/5.2/html
+         */
+        Collective\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -201,6 +207,12 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Forms & HTML: https://laravelcollective.com/docs/5.2/html
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

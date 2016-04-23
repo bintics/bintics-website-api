@@ -1,0 +1,16 @@
+{
+  "name": "bintics-cms",
+  "homepage": "bintics-cms.app",
+  "authors": [
+    "Farias Sánches Federico"
+  ],
+  "description": "CMS bintics",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
