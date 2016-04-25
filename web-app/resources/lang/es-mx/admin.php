@@ -14,26 +14,30 @@ return [
     */
     'title' => 'Bintics CMS',
     'logout' => 'Salir',
+    'enter' => 'Entrar',
+    'new' => 'Nuevo',
+    'edit' => 'Editar',
+    'delete' => 'Eliminar',
+    'update' => 'Actualizar',
+    'actions' => 'Acciones',
+    'no_results' => 'No se encontraron resultados',
     'home' => ['title' => 'Inicio'],
     'catalogs' => 'Catalogos',
     'format_courses' => ['title' => 'Formatos de cursos',
                          'new' => 'Nuevo formato de curso',
                          'field' => ['name' => 'Nombre del formato del curso',
                                      'created' => 'Fecha de alta',
-                                     'updated' => 'Fecha de ultima actualizacion',
-                                     'actions' => 'Acciones']],
+                                     'updated' => 'Fecha de ultima actualizacion']],
     'users' => ['title' => 'Control de usuarios',
                 'field' => ['email' => 'E-mail',
                             'created' => 'Fecha de alta',
-                            'updated' => 'Fecha de ultima actualizacion',
-                            'actions' => 'Acciones']],
+                            'updated' => 'Fecha de ultima actualizacion']],
     'courses' => ['title' => 'Control de cursos',
                   'new' => 'Nuevo curso',
                   'field' => ['name' => 'Nombre del curso',
                               'start_date' => 'Fecha de inicio',
                               'cost' => 'Costo',
-                              'description' => 'Descripsion',
-                              'actions' => 'Acciones']
+                              'description' => 'Descripsion']
                   ]
 
 ];

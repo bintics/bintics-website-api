@@ -30,6 +30,9 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('/', ['as' => 'admin.format_courses.home', 'uses' => 'AdminConsole\AdminFormatCoursesController@getIndex']);
 		Route::get('new', ['as' => 'admin.format_courses.new', 'uses' => 'AdminConsole\AdminFormatCoursesController@getNew']);
 		Route::post('new', ['uses' => 'AdminConsole\AdminFormatCoursesController@postNew']);
+		Route::get('{formatCourse}/edit', ['as' => 'admin.format_courses.edit', 'uses' => 'AdminConsole\AdminFormatCoursesController@getEdit']);
+		Route::post('{formatCourse}/edit', ['uses' => 'AdminConsole\AdminFormatCoursesController@postEdit']);
+		Route::post('{formatCourse}/delete', ['as' => 'admin.format_courses.delete', 'uses' => 'AdminConsole\AdminFormatCoursesController@postDelete']);
 	});	
 
 	Route::group(['prefix' => 'courses'], function() {
