@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'client.home', 'uses' => 'Clients\HomeController@getIndex']);
+Route::get('courses/free', ['as' => 'client.courses.free', 'uses' => 'Clients\CoursesController@getIndex']);
+
 
 Route::get('admin-console-login', ['as' => 'admin.login', 'uses' => 'AdminConsole\AdminConsoleAuthController@getLogin']);
 Route::post('admin-console-login', ['middleware' => ['first.user'], 'uses' => 'AdminConsole\AdminConsoleAuthController@postLogin']);
@@ -39,6 +39,9 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('/', ['as' => 'admin.courses', 'uses' => 'AdminConsole\AdminCoursesController@getIndex']);
 		Route::get('new', ['as' => 'admin.courses.new', 'uses' => 'AdminConsole\AdminCoursesController@getNew']);
 		Route::post('new', ['uses' => 'AdminConsole\AdminCoursesController@postNew']);
+
+		Route::get('{course}/edit', ['as' =>'admin.courses.edit', 'uses' => 'AdminConsole\AdminCoursesController@getEdit']);
+		Route::post('{course}/edit', ['uses' => 'AdminConsole\AdminCoursesController@postEdit']);
 	});	
 
 });

@@ -20,6 +20,7 @@ return [
     'delete' => 'Eliminar',
     'update' => 'Actualizar',
     'actions' => 'Acciones',
+    'details' => 'Detalles',
     'no_results' => 'No se encontraron resultados',
     'home' => ['title' => 'Inicio'],
     'catalogs' => 'Catalogos',
@@ -34,10 +35,12 @@ return [
                             'updated' => 'Fecha de ultima actualizacion']],
     'courses' => ['title' => 'Control de cursos',
                   'new' => 'Nuevo curso',
+                  'edit' => 'Editar curso',
                   'field' => ['name' => 'Nombre del curso',
                               'start_date' => 'Fecha de inicio',
                               'cost' => 'Costo',
-                              'description' => 'Descripsion']
+                              'description' => 'Descripsion',
+                              'registered' => 'Alumnos registrados']
                   ]
 
 ];

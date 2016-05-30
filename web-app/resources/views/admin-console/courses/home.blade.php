@@ -12,6 +12,7 @@
 					<th>{!! trans('admin.courses.field.name') !!}</th>
 					<th>{!! trans('admin.courses.field.start_date') !!}</th>
 					<th>{!! trans('admin.courses.field.cost') !!}</th>
+					<th>{!! trans('admin.courses.field.registered') !!}</th>
 					<th>{!! trans('admin.courses.field.description') !!}</th>
 					<th>{!! trans('admin.actions') !!}</th>
 				</tr>
@@ -22,8 +23,11 @@
 						<td>{!! $course->name !!}</td>
 						<td>{!! $course->start_date !!}</td>
 						<td>{!! $course->cost !!}</td>
+						<td>{!! $course->users->count() !!}</td>
 						<td>{!! $course->description !!}</td>
-						<td>Algo</td>
+						<td>
+							<a href="{!! route('admin.courses.edit', ['id' => $course->id]) !!}">{!! trans('admin.edit') !!}</a>
+						</td>
 					</tr>
 				@endforeach
 			</tbody>

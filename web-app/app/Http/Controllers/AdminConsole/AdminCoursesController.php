@@ -35,4 +35,33 @@ class AdminCoursesController extends Controller {
 		return redirect()->back();
 	}
 
+	public function getEdit(Course $course) {
+		$formatCourses = FormatCourse::all();
+		return view('admin-console.courses.edit', ['course' => $course, 'formatCourses' => $formatCourses]);
+	}
+
+	public function postEdit(Course $course, Request $request) {
+		$name = $request->input('name');
+		$start_date = $request->input('start_date');
+		$format_course_id = $request->input('format_course');
+		$cost = $request->input('cost');
+		$_course = Course::where('name', $name)
+							->where('start_date', $start_date)
+							->where('format_course_id', $format_course_id)
+							->where('cost', $cost)
+							->first();
+
+		if(!is_null($_course))
+			return redirect()->back();
+
+		$course->name = $name;
+		$course->format_course_id = $request->input('format_course');
+		$course->start_date = $request->input('start_date');
+		$course->cost = $cost;
+		$course->description = $request->input('description');
+		$course->save();
+
+		return redirect()->route('admin.courses');
+	}
+
 }

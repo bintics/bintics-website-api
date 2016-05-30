@@ -10,7 +10,7 @@
 				<th>{!! trans('admin.users.field.email') !!}</th>
 				<th>{!! trans('admin.users.field.created') !!}</th>
 				<th>{!! trans('admin.users.field.updated') !!}</th>
-				<th>{!! trans('admin.users.field.actions') !!}</th>
+				<th>{!! trans('admin.actions') !!}</th>
 			</tr>
 		</thead>
 		<tbody>

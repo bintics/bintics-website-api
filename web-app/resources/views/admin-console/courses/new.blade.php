@@ -5,7 +5,7 @@
 @section('content')
 	<h2>{!! trans('admin.courses.new') !!}</h2>
 	{!! Form::open(['route' => ['admin.courses.new']]) !!}
-		<label for="format_course">Formato de curso</label>
+		<label for="format_course">{!! trans('admin.format_courses.title') !!}</label>
 		<select name="format_course" id="format_course" class="form-control">
 			@foreach($formatCourses as $format)
 			<option value="{!! $format->id !!}">{!! $format->name !!}</option>
