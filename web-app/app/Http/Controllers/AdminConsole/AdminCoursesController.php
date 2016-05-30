@@ -19,20 +19,10 @@ class AdminCoursesController extends Controller {
 	}
 
 	public function postNew(Request $request) {
-		$name = $request->input('name');
-		$startDate = $request->input('start_date');
-		$count = Course::where('name', $name)->where('start_date', $startDate)->count();
-		if($count <= 0) {
-			$course = new Course;
-			$course->format_course_id = $request->input('format_course');
-			$course->name = $name;
-			$course->start_date = $startDate;
-			$course->cost = $request->input('cost');
-			$course->description = $request->input('description');
-			$course->save();
-			return redirect()->route('admin.courses');
-		}
-		return redirect()->back();
+		if($this->existsCourse($request))
+			return redirect()->back();
+		$this->updateCourse(new Course(), $request);
+		return redirect()->route('admin.courses');
 	}
 
 	public function getEdit(Course $course) {
@@ -41,27 +31,43 @@ class AdminCoursesController extends Controller {
 	}
 
 	public function postEdit(Course $course, Request $request) {
+		if($this->existsCourse($request))
+			return redirect()->back();
+		$this->updateCourse($course, $request);
+		return redirect()->route('admin.courses');
+	}
+
+	private function existsCourse(Request $request) {
 		$name = $request->input('name');
+		$url_logo = $request->input('url_logo');
 		$start_date = $request->input('start_date');
 		$format_course_id = $request->input('format_course');
 		$cost = $request->input('cost');
-		$_course = Course::where('name', $name)
+		$description = $request->input('description');
+		$num_match = Course::where('name', $name)
 							->where('start_date', $start_date)
 							->where('format_course_id', $format_course_id)
 							->where('cost', $cost)
-							->first();
+							->where('description', $description)
+							->count();
+		return $num_match > 0;
+	}
 
-		if(!is_null($_course))
-			return redirect()->back();
-
+	private function updateCourse(Course $course, Request $request) {
+		$name = $request->input('name');
+		$url_logo = $request->input('url_logo');
+		$start_date = $request->input('start_date');
+		$format_course_id = $request->input('format_course');
+		$cost = $request->input('cost');
+		$description = $request->input('description');
+		
 		$course->name = $name;
-		$course->format_course_id = $request->input('format_course');
-		$course->start_date = $request->input('start_date');
+		$course->url_logo = (is_null($url_logo) || trim($url_logo) == "") ? null : $url_logo;
+		$course->format_course_id = $format_course_id;
+		$course->start_date = $start_date;
 		$course->cost = $cost;
-		$course->description = $request->input('description');
+		$course->description = $description;
 		$course->save();
-
-		return redirect()->route('admin.courses');
 	}
 
 }

@@ -10,7 +10,6 @@
 			<thead>
 				<tr>
 					<th>{!! trans('admin.courses.field.name') !!}</th>
-					<th>{!! trans('admin.courses.field.start_date') !!}</th>
 					<th>{!! trans('admin.courses.field.cost') !!}</th>
 					<th>{!! trans('admin.courses.field.registered') !!}</th>
 					<th>{!! trans('admin.courses.field.description') !!}</th>
@@ -20,8 +19,24 @@
 			<tbody>
 				@foreach($courses as $course)
 					<tr>
-						<td>{!! $course->name !!}</td>
-						<td>{!! $course->start_date !!}</td>
+						<td>
+							<div class="col-sm-12 col-md-12">
+								<div class="thumbnail">
+									@if(is_null($course->url_logo))
+										<img src="{!! asset('img/proximamente.gif') !!}" alt="Proximamente" height="250px" width="250px" />
+									@else
+										<img src="{!! $course->url_logo !!}" alt="{!! $course->name !!}" height="250px" width="250px" />
+									@endif
+									<div class="caption">
+										<h4>{!! $course->name !!}</h4>
+										<h5>
+											{!! trans('clients.courses.fields.start_date') !!}
+											<small>{!! $course->start_date !!}</small>
+										</h5>
+									</div>
+								</div>
+							</div>
+						</td>
 						<td>{!! $course->cost !!}</td>
 						<td>{!! $course->users->count() !!}</td>
 						<td>{!! $course->description !!}</td>

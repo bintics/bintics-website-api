@@ -17,5 +17,6 @@ return [
     'details' => 'Detalles',
     'courses' => ['title' => 'Lista de cursos',
                   'available' => 'Cursos disponibles',
-                  'sign_up' => 'Inscribirme']
+                  'sign_up' => 'Inscribirme',
+                  'fields' => ['start_date' => 'Inicio']]
 ];

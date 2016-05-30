@@ -22,6 +22,7 @@ return [
     'actions' => 'Acciones',
     'details' => 'Detalles',
     'no_results' => 'No se encontraron resultados',
+    'preview' => 'Preview',
     'home' => ['title' => 'Inicio'],
     'catalogs' => 'Catalogos',
     'format_courses' => ['title' => 'Formatos de cursos',
@@ -39,6 +40,7 @@ return [
                   'field' => ['name' => 'Nombre del curso',
                               'start_date' => 'Fecha de inicio',
                               'cost' => 'Costo',
+                              'url_logo' => 'URL de logo',
                               'description' => 'Descripsion',
                               'registered' => 'Alumnos registrados']
                   ]
