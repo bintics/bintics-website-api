@@ -21,6 +21,8 @@ return [
     'update' => 'Actualizar',
     'actions' => 'Acciones',
     'details' => 'Detalles',
+    'enable' => 'Habilitar',
+    'disable' => 'Deshabilitar',
     'no_results' => 'No se encontraron resultados',
     'preview' => 'Preview',
     'home' => ['title' => 'Inicio'],

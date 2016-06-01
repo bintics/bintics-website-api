@@ -42,6 +42,15 @@
 						<td>{!! $course->description !!}</td>
 						<td>
 							<a href="{!! route('admin.courses.edit', ['id' => $course->id]) !!}">{!! trans('admin.edit') !!}</a>
+							@if(!$course->released)
+								{!! Form::open(['route' => ['admin.courses.enable', $course->id], 'style' => 'display: inline;']) !!}
+								<input type="submit" class="btn-link" style="display: inline;" value="{!! trans('admin.enable') !!}" />
+								{!! Form::close() !!}
+							@else
+								{!! Form::open(['route' => ['admin.courses.disable', $course->id], 'style' => 'display: inline;']) !!}
+								<input type="submit" class="btn-link" style="display: inline;" value="{!! trans('admin.disable') !!}" />
+								{!! Form::close() !!}
+							@endif
 						</td>
 					</tr>
 				@endforeach

@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 
 		Route::get('{course}/edit', ['as' =>'admin.courses.edit', 'uses' => 'AdminConsole\AdminCoursesController@getEdit']);
 		Route::post('{course}/edit', ['uses' => 'AdminConsole\AdminCoursesController@postEdit']);
+		Route::post('{course}/enable', ['as' => 'admin.courses.enable', 'uses' => 'AdminConsole\AdminCoursesController@postEnable']);
+		Route::post('{course}/disable', ['as' => 'admin.courses.disable', 'uses' => 'AdminConsole\AdminCoursesController@postDisable']);
 	});	
 
 });

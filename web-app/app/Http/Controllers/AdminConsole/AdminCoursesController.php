@@ -37,6 +37,18 @@ class AdminCoursesController extends Controller {
 		return redirect()->route('admin.courses');
 	}
 
+	public function postEnable(Course $course) {
+		$course->released = true;
+		$course->save();
+		return redirect()->back();
+	}
+
+	public function postDisable(Course $course) {
+		$course->released = false;
+		$course->save();
+		return redirect()->back();
+	}
+
 	private function existsCourse(Request $request) {
 		$name = $request->input('name');
 		$url_logo = $request->input('url_logo');
@@ -49,6 +61,7 @@ class AdminCoursesController extends Controller {
 							->where('format_course_id', $format_course_id)
 							->where('cost', $cost)
 							->where('description', $description)
+							->where('url_logo', $url_logo)
 							->count();
 		return $num_match > 0;
 	}

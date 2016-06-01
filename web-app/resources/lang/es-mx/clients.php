@@ -17,6 +17,8 @@ return [
     'details' => 'Detalles',
     'courses' => ['title' => 'Lista de cursos',
                   'available' => 'Cursos disponibles',
+                  'not_found' => 'Curo no encontrado',
+                  'no_abailable' => 'No hay cursos disponibles',
                   'sign_up' => 'Inscribirme',
                   'fields' => ['start_date' => 'Inicio']]
 ];
