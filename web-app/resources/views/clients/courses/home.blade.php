@@ -21,7 +21,7 @@
 								{!! trans('clients.courses.fields.start_date') !!}
 								<small>{!! $course->start_date !!}</small>
 							</h5>
-							<p>{!! $course->description !!}</p>
+							<p>{!! $course->short_description !!}</p>
 							<p class="text-center">
 								<a href="#" class="btn btn-primary" role="button">{!! trans('clients.courses.sign_up') !!}</a>
 								<a href="#" class="btn btn-default" role="button">{!! trans('clients.details') !!}</a>

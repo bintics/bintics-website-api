@@ -47,8 +47,11 @@
 			</div>
 		</div>
 
-		<label for="description">{!! trans('admin.courses.field.description') !!}</label>
-		{!! Form::textarea('description', '', ['class' => 'form-control', 'id' => 'description']) !!}
+		<label for="short_description">{!! trans('admin.courses.field.short_description') !!}</label>
+		{!! Form::textarea('short_description', '', ['class' => 'form-control', 'id' => 'short_description']) !!}
+
+		<label for="long_description">{!! trans('admin.courses.field.long_description') !!}</label>
+		{!! Form::textarea('long_description', '', ['class' => 'form-control', 'id' => 'long_description']) !!}
 		
 		{!! Form::submit(trans('admin.save'), ['class' => 'btn btn-primary btn-block']) !!}
 	{!! Form::close() !!}

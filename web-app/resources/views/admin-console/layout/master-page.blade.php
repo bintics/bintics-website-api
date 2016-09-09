@@ -26,6 +26,12 @@
 					<li class="{!! (route('admin.courses') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/courses*') ? 'active' : '')!!}">
 						<a href="{!! route('admin.courses') !!}">{!! trans('admin.courses.title') !!}</a>
 					</li>
+
+					<li class="dropdown-header">{!! trans('admin.sections.title') !!}</li>
+					<li class="{!! (route('admin.sections.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/sections*') ? 'active' : '')!!}">
+						<a href="{!! route('admin.sections.home') !!}">{!! trans('admin.sections.title') !!}</a>
+					</li>
+
 					<li class="dropdown-header">{!! trans('admin.catalogs') !!}</li>
 					<li class="{!! (route('admin.format_courses.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/format-courses*') ? 'active' : '')!!}">
 						<a href="{!! route('admin.format_courses.home') !!}">{!! trans('admin.format_courses.title') !!}</a>

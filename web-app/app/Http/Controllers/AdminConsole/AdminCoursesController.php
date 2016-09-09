@@ -58,12 +58,12 @@ class AdminCoursesController extends Controller {
 		$start_date = $request->input('start_date');
 		$format_course_id = $request->input('format_course');
 		$cost = $request->input('cost');
-		$description = $request->input('description');
+		$short_description = $request->input('short_description');
 		$num_match = Course::where('name', $name)
 							->where('start_date', $start_date)
 							->where('format_course_id', $format_course_id)
 							->where('cost', $cost)
-							->where('description', $description)
+							->where('short_description', $short_description)
 							->where('url_logo', $url_logo)
 							->count();
 		return $num_match > 0;
@@ -75,7 +75,8 @@ class AdminCoursesController extends Controller {
 		$start_date = $request->input('start_date');
 		$format_course_id = $request->input('format_course');
 		$cost = $request->input('cost');
-		$description = $request->input('description');
+		$short_description = $request->input('short_description');
+		$long_description = $request->input('long_description');
 		$currency_id = $request->input('currency');
 		
 		$course->name = $name;
@@ -84,7 +85,8 @@ class AdminCoursesController extends Controller {
 		$course->type_currency_id = $currency_id;
 		$course->start_date = $start_date;
 		$course->cost = $cost;
-		$course->description = $description;
+		$course->short_description = $short_description;
+		$course->long_description = $long_description;
 		$course->save();
 	}
 

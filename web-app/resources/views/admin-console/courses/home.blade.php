@@ -12,7 +12,7 @@
 					<th>{!! trans('admin.courses.field.name') !!}</th>
 					<th>{!! trans('admin.courses.field.cost') !!}</th>
 					<th>{!! trans('admin.courses.field.registered') !!}</th>
-					<th>{!! trans('admin.courses.field.description') !!}</th>
+					<th>{!! trans('admin.courses.field.short_description') !!}</th>
 					<th>{!! trans('admin.actions') !!}</th>
 				</tr>
 			</thead>
@@ -39,7 +39,7 @@
 						</td>
 						<td>${!! $course->cost !!} {!! $course->currency->name !!}</td>
 						<td>{!! $course->users->count() !!}</td>
-						<td>{!! $course->description !!}</td>
+						<td>{!! $course->short_description !!}</td>
 						<td>
 							<a href="{!! route('admin.courses.edit', ['id' => $course->id]) !!}">{!! trans('admin.edit') !!}</a>
 							@if(!$course->released)

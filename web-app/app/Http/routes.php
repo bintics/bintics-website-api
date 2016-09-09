@@ -26,6 +26,33 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminConsole\AdminUsersController@getIndex']);
 	});
 
+	/*----------------------------*/
+	//		Secciones
+	/*----------------------------*/
+	Route::group(['prefix' => 'sections'], function() {
+		Route::get('/', ['as' => 'admin.sections.home', 'uses' => 'AdminConsole\AdminSectionsController@getIndex']);
+		Route::get('new', ['as' => 'admin.sections.new', 'uses' => 'AdminConsole\AdminSectionsController@getNew']);
+		Route::post('new', ['uses' => 'AdminConsole\AdminSectionsController@postNew']);
+		Route::get('{section}/edit', ['as' => 'admin.sections.edit', 'uses' => 'AdminConsole\AdminSectionsController@getEdit']);
+		Route::post('{section}/edit', ['uses' => 'AdminConsole\AdminSectionsController@postEdit']);
+		Route::post('{section}/delete', ['as' => 'admin.sections.delete', 'uses' => 'AdminConsole\AdminSectionsController@postDelete']);
+	});
+	
+
+	/*----------------------------*/
+	//		Páginas
+	/*----------------------------*/
+	/*
+	Route::group(['prefix' => 'pages'], function() {
+		Route::get('/', ['as' => 'admin.pages.home', 'uses' => 'AdminConsole\AdminPagesController@getIndex']);
+		Route::get('new', ['as' => 'admin.pages.new', 'uses' => 'AdminConsole\AdminPagesController@getNew']);
+		Route::post('new', ['uses' => 'AdminConsole\AdminPagesController@postNew']);
+		Route::get('{page}/edit', ['as' => 'admin.pages.edit', 'uses' => 'AdminConsole\AdminPagesController@getEdit']);
+		Route::post('{page}/edit', ['uses' => 'AdminConsole\AdminPagesController@postEdit']);
+		Route::post('{page}/delete', ['as' => 'admin.pages.delete', 'uses' => 'AdminConsole\AdminPagesController@postDelete']);
+	});
+	*/
+
 
 	/*----------------------------*/
 	//		Catalogos
@@ -37,7 +64,7 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('{formatCourse}/edit', ['as' => 'admin.format_courses.edit', 'uses' => 'AdminConsole\AdminFormatCoursesController@getEdit']);
 		Route::post('{formatCourse}/edit', ['uses' => 'AdminConsole\AdminFormatCoursesController@postEdit']);
 		Route::post('{formatCourse}/delete', ['as' => 'admin.format_courses.delete', 'uses' => 'AdminConsole\AdminFormatCoursesController@postDelete']);
-	});	
+	});
 
 	Route::group(['prefix' => 'currencies'], function() {
 		Route::get('/', ['as' => 'admin.currencies.home', 'uses' => 'AdminConsole\AdminCurrenciesController@getIndex']);

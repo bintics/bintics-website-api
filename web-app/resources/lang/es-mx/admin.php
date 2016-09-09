@@ -44,7 +44,8 @@ return [
                               'start_date' => 'Fecha de inicio',
                               'cost' => 'Costo',
                               'url_logo' => 'URL de logo',
-                              'description' => 'Descripsion',
+                              'short_description' => 'Descripción corta',
+                              'long_description' => 'Descripción larga',
                               'registered' => 'Alumnos registrados']
                   ],
     'currencies' => ['title' => 'Tipos de moneda',
@@ -52,7 +53,14 @@ return [
                   'edit' => 'Editar moneda',
                   'type' => 'Tipo de moneda',
                   'field' => ['name' => 'Nombre de la moneda',
-                              'description' => 'Descripsion']
-                  ]
+                              'description' => 'Descripción']
+                  ],
+    'sections' => ['title' => 'Secciones de página',
+                  'new' => 'Nueva sección',
+                  'edit' => 'Editar sección',
+                  'field' => ['name' => 'Nombre de la sección',
+                              'description' => 'Descripción']
+                  ],
+
 
 ];
