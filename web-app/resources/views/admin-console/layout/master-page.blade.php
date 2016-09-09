@@ -30,6 +30,9 @@
 					<li class="{!! (route('admin.format_courses.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/format-courses*') ? 'active' : '')!!}">
 						<a href="{!! route('admin.format_courses.home') !!}">{!! trans('admin.format_courses.title') !!}</a>
 					</li>
+					<li class="{!! (route('admin.currencies.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/currencies*') ? 'active' : '')!!}">
+						<a href="{!! route('admin.currencies.home') !!}">{!! trans('admin.currencies.title') !!}</a>
+					</li>
 					<li class="{!! (route('admin.logout') == (URL::to('/') . '/' . Request::path()) ? 'active' : '')!!}">
 						<a href="{!! route('admin.logout') !!}">{!! trans('admin.logout') !!}</a>
 					</li>

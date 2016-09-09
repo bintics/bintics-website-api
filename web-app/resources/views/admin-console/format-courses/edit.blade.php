@@ -8,6 +8,6 @@
 		<label for="name">{!! trans('admin.format_courses.field.name') !!}</label>
 		{!! Form::text('name', $formatCourse->name, ['class' => 'form-control', 'id' => 'name']) !!}
 		
-		{!! Form::submit('entrar', ['class' => 'btn btn-primary btn-block']) !!}
+		{!! Form::submit(trans('admin.save'), ['class' => 'btn btn-primary btn-block']) !!}
 	{!! Form::close() !!}
 @endsection

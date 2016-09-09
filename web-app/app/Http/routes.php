@@ -24,8 +24,12 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 
 	Route::group(['prefix' => 'users'], function() {
 		Route::get('/', ['as' => 'admin.users', 'uses' => 'AdminConsole\AdminUsersController@getIndex']);
-	});	
+	});
 
+
+	/*----------------------------*/
+	//		Catalogos
+	/*----------------------------*/
 	Route::group(['prefix' => 'format-courses'], function() {
 		Route::get('/', ['as' => 'admin.format_courses.home', 'uses' => 'AdminConsole\AdminFormatCoursesController@getIndex']);
 		Route::get('new', ['as' => 'admin.format_courses.new', 'uses' => 'AdminConsole\AdminFormatCoursesController@getNew']);
@@ -33,6 +37,15 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('{formatCourse}/edit', ['as' => 'admin.format_courses.edit', 'uses' => 'AdminConsole\AdminFormatCoursesController@getEdit']);
 		Route::post('{formatCourse}/edit', ['uses' => 'AdminConsole\AdminFormatCoursesController@postEdit']);
 		Route::post('{formatCourse}/delete', ['as' => 'admin.format_courses.delete', 'uses' => 'AdminConsole\AdminFormatCoursesController@postDelete']);
+	});	
+
+	Route::group(['prefix' => 'currencies'], function() {
+		Route::get('/', ['as' => 'admin.currencies.home', 'uses' => 'AdminConsole\AdminCurrenciesController@getIndex']);
+		Route::get('new', ['as' => 'admin.currencies.new', 'uses' => 'AdminConsole\AdminCurrenciesController@getNew']);
+		Route::post('new', ['uses' => 'AdminConsole\AdminCurrenciesController@postNew']);
+		Route::get('{currency}/edit', ['as' => 'admin.currencies.edit', 'uses' => 'AdminConsole\AdminCurrenciesController@getEdit']);
+		Route::post('{currency}/edit', ['uses' => 'AdminConsole\AdminCurrenciesController@postEdit']);
+		Route::post('{currency}/delete', ['as' => 'admin.currencies.delete', 'uses' => 'AdminConsole\AdminCurrenciesController@postDelete']);
 	});	
 
 	Route::group(['prefix' => 'courses'], function() {

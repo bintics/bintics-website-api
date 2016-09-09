@@ -11,12 +11,14 @@ use Auth;
 class AdminConsoleAuthController extends Controller {
 
 	public function getLogin() {
-		/*
-		$usuario = new User();
-		$usuario->email = 'cobrakik01@hotmail.com';
-		$usuario->password = Hash::make('12345');
-		$usuario->save();
-		*/
+		$count = User::count();
+		if($count == 0) {
+			$usuario = new User();
+			$usuario->email = 'admin@admin.com';
+			$usuario->password = Hash::make('masterkey');
+			$usuario->save();
+		}
+		
 		return view('admin-console.login');
 	}
 

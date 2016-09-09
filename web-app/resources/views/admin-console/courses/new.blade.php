@@ -7,10 +7,14 @@
 	{!! Form::open(['route' => ['admin.courses.new']]) !!}
 		<label for="url_logo">{!! trans('admin.courses.field.url_logo') !!}</label>
 			{!! Form::text('url_logo', '', ['class' => 'form-control', 'id' => 'url_logo']) !!}
+		
 		<label for="format_course">{!! trans('admin.format_courses.title') !!}</label>
+		@if($formatCourses->count() == 0)
+			<a href="{!! route('admin.format_courses.new') !!}">{!! trans('admin.format_courses.new') !!}</a>
+		@endif
 		<select name="format_course" id="format_course" class="form-control">
 			@foreach($formatCourses as $format)
-			<option value="{!! $format->id !!}">{!! $format->name !!}</option>
+				<option value="{!! $format->id !!}">{!! $format->name !!}</option>
 			@endforeach
 		</select>
 		<label for="name">{!! trans('admin.courses.field.name') !!}</label>
@@ -24,12 +28,28 @@
 			</span>
 		</div>
 
-		<label for="cost">{!! trans('admin.courses.field.cost') !!}</label>
-		{!! Form::text('cost', '', ['class' => 'form-control', 'id' => 'cost']) !!}
+		
+		<div class="row">
+			<div class="col-md-10">
+				<label for="cost">{!! trans('admin.courses.field.cost') !!}</label>
+				{!! Form::text('cost', '', ['class' => 'form-control', 'id' => 'cost']) !!}
+			</div>
+			<div class="col-md-2">
+				<label for="currency">{!! trans('admin.currencies.type') !!}</label>
+				@if($currencies->count() == 0)
+					<a href="{!! route('admin.currencies.new') !!}">{!! trans('admin.currencies.new') !!}</a>
+				@endif
+				<select name="currency" id="currency" class="form-control">
+					@foreach($currencies as $currency)
+						<option value="{!! $currency->id !!}">{!! $currency->name !!}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
 
 		<label for="description">{!! trans('admin.courses.field.description') !!}</label>
 		{!! Form::textarea('description', '', ['class' => 'form-control', 'id' => 'description']) !!}
 		
-		{!! Form::submit(trans('admin.new'), ['class' => 'btn btn-primary btn-block']) !!}
+		{!! Form::submit(trans('admin.save'), ['class' => 'btn btn-primary btn-block']) !!}
 	{!! Form::close() !!}
 @endsection

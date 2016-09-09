@@ -16,6 +16,7 @@ return [
     'logout' => 'Salir',
     'enter' => 'Entrar',
     'new' => 'Nuevo',
+    'save' => 'Guardar',
     'edit' => 'Editar',
     'delete' => 'Eliminar',
     'update' => 'Actualizar',
@@ -45,6 +46,13 @@ return [
                               'url_logo' => 'URL de logo',
                               'description' => 'Descripsion',
                               'registered' => 'Alumnos registrados']
+                  ],
+    'currencies' => ['title' => 'Tipos de moneda',
+                  'new' => 'Nueva moneda',
+                  'edit' => 'Editar moneda',
+                  'type' => 'Tipo de moneda',
+                  'field' => ['name' => 'Nombre de la moneda',
+                              'description' => 'Descripsion']
                   ]
 
 ];

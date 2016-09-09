@@ -11,4 +11,8 @@ class Course extends Model
     public function users() {
     	return $this->belongsToMany('App\Models\User', 'users_records_courses', 'course_id', 'user_id');
     }
+
+    public function currency() {
+    	return $this->belongsTo('App\Models\Currency', 'type_currency_id');
+    }
 }

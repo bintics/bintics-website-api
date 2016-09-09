@@ -3,6 +3,7 @@ namespace App\Http\Controllers\AdminConsole;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Currency;
 use App\Models\Course;
 use App\Models\FormatCourse;
 
@@ -15,7 +16,8 @@ class AdminCoursesController extends Controller {
 
 	public function getNew() {
 		$formatCourses = FormatCourse::all();
-		return view('admin-console.courses.new', ['formatCourses' => $formatCourses]);
+		$currencies = Currency::all();
+		return view('admin-console.courses.new', ['formatCourses' => $formatCourses, 'currencies' => $currencies]);
 	}
 
 	public function postNew(Request $request) {
@@ -27,7 +29,8 @@ class AdminCoursesController extends Controller {
 
 	public function getEdit(Course $course) {
 		$formatCourses = FormatCourse::all();
-		return view('admin-console.courses.edit', ['course' => $course, 'formatCourses' => $formatCourses]);
+		$currencies = Currency::all();
+		return view('admin-console.courses.edit', ['course' => $course, 'formatCourses' => $formatCourses, 'currencies' => $currencies]);
 	}
 
 	public function postEdit(Course $course, Request $request) {
@@ -73,10 +76,12 @@ class AdminCoursesController extends Controller {
 		$format_course_id = $request->input('format_course');
 		$cost = $request->input('cost');
 		$description = $request->input('description');
+		$currency_id = $request->input('currency');
 		
 		$course->name = $name;
 		$course->url_logo = (is_null($url_logo) || trim($url_logo) == "") ? null : $url_logo;
 		$course->format_course_id = $format_course_id;
+		$course->type_currency_id = $currency_id;
 		$course->start_date = $start_date;
 		$course->cost = $cost;
 		$course->description = $description;

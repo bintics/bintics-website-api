@@ -37,7 +37,7 @@
 								</div>
 							</div>
 						</td>
-						<td>{!! $course->cost !!}</td>
+						<td>${!! $course->cost !!} {!! $course->currency->name !!}</td>
 						<td>{!! $course->users->count() !!}</td>
 						<td>{!! $course->description !!}</td>
 						<td>
