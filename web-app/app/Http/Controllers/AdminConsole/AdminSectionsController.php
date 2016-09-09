@@ -9,8 +9,34 @@ use Auth;
 class AdminSectionsController extends Controller {
 
 	public function getIndex() {
-		$sections = Section::paginate(10);
+		$this->checkDefaultSections();
+		$sections = Section::whereNull('parent_section_id')->paginate(10);
 		return view('admin-console.sections.home', ['sections' => $sections]);
+	}
+
+	private function checkDefaultSections() {
+		// NavTop
+		if(Section::count() == 0) {
+			$navTop = new Section();
+			$navTop->name = 'NavTop';
+			$navTop->user_id = Auth::user()->id;
+			$navTop->save();
+
+			$navLeft = new Section();
+			$navLeft->name = 'NavLeft';
+			$navLeft->user_id = Auth::user()->id;
+			$navLeft->save();
+
+			$navRight = new Section();
+			$navRight->name = 'NavRight';
+			$navRight->user_id = Auth::user()->id;
+			$navRight->save();
+
+			$navBottom = new Section();
+			$navBottom->name = 'NavBottom';
+			$navBottom->user_id = Auth::user()->id;
+			$navBottom->save();
+		}
 	}
 
 	public function getNew() {
@@ -18,10 +44,10 @@ class AdminSectionsController extends Controller {
 	}
 
 	public function postNew(Request $request) {
-		$aection = new Section();
-		$aection->name = $request->input('name');
-		$aection->user_id = Auth::user()->id;
-		$aection->save();
+		$section = new Section();
+		$section->name = $request->input('name');
+		$section->user_id = Auth::user()->id;
+		$section->save();
 		return redirect()->route('admin.sections.home');
 	}
 
@@ -35,7 +61,11 @@ class AdminSectionsController extends Controller {
 		if(is_null($f)) {
 			$section->name = $name;
 			$section->save();
-			return redirect()->route('admin.sections.home');
+			if(is_null($section->parentSection)) {
+				return redirect()->route('admin.sections.home');
+			} else {
+				return redirect()->route('admin.sections.sub.home', ['id' => $section->parentSection->id]);
+			}
 		}
 		return redirect()->back();
 	}
@@ -45,4 +75,21 @@ class AdminSectionsController extends Controller {
 		return redirect()->back();
 	}
 
+
+	public function getHomeSubSection(Section $section) {
+		return view('admin-console.sections.sub.home', ['parent' => $section]);
+	}
+
+	public function getAddSubSection(Section $section) {
+		return view('admin-console.sections.sub.add', ['parent' => $section]);
+	}
+
+	public function postNewSubSection(Request $request) {
+		$_section = new Section();
+		$_section->name = $request->input('name');
+		$_section->user_id = Auth::user()->id;
+		$_section->parent_section_id = $request->input('parent_id');
+		$_section->save();
+		return redirect()->route('admin.sections.sub.home', ['id' => $request->input('parent_id')]);
+	}
 }

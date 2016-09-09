@@ -36,6 +36,10 @@ Route::group(['prefix' => 'admin-console', 'middleware' => ['auth']], function()
 		Route::get('{section}/edit', ['as' => 'admin.sections.edit', 'uses' => 'AdminConsole\AdminSectionsController@getEdit']);
 		Route::post('{section}/edit', ['uses' => 'AdminConsole\AdminSectionsController@postEdit']);
 		Route::post('{section}/delete', ['as' => 'admin.sections.delete', 'uses' => 'AdminConsole\AdminSectionsController@postDelete']);
+
+		Route::get('{section}/sub-sections', ['as' => 'admin.sections.sub.home', 'uses' => 'AdminConsole\AdminSectionsController@getHomeSubSection']);
+		Route::get('{section}/add-sub-section', ['as' => 'admin.sections.sub.add', 'uses' => 'AdminConsole\AdminSectionsController@getAddSubSection']);
+		Route::post('add-sub-section', ['as' => 'admin.sections.sub.add_post', 'uses' => 'AdminConsole\AdminSectionsController@postNewSubSection']);
 	});
 	
 

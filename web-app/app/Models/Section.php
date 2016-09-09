@@ -13,7 +13,7 @@ class Section extends Model
     }
 
     public function sections() {
-    	return $this->hasMany('App\Models\Section', 'id', 'parent_section_id');
+    	return $this->hasMany('App\Models\Section', 'parent_section_id', 'id');
     }
 
     public function parentSection() {

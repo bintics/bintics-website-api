@@ -23,8 +23,11 @@ return [
     'actions' => 'Acciones',
     'details' => 'Detalles',
     'enable' => 'Habilitar',
+    'back' => '< Regresar',
     'disable' => 'Deshabilitar',
     'no_results' => 'No se encontraron resultados',
+    'created_at' => 'Fecha de alta',
+    'updated_at' => 'Fecha de actualización',
     'preview' => 'Preview',
     'home' => ['title' => 'Inicio'],
     'catalogs' => 'Catalogos',
@@ -59,7 +62,22 @@ return [
                   'new' => 'Nueva sección',
                   'edit' => 'Editar sección',
                   'field' => ['name' => 'Nombre de la sección',
-                              'description' => 'Descripción']
+                              'description' => 'Descripción'],
+                  'sub' => ['title' => 'Secciones',
+                            'add' => 'Agregar sub sección',
+                            'add_title' => 'Sub Secciones de :name',
+                            'list' => 'Ver sub secciones',
+                            'field' => ['name' => 'Nombre de la subsección']
+                          ]
+                  ],
+    'pages' => ['title' => 'Página',
+                  'new' => 'Nueva página',
+                  'edit' => 'Editar página',
+                  'field' => ['title' => 'Nombre de la página',
+                              'description' => 'Descripción'],
+                  'sub' => ['title' => 'Páginas',
+                            'add' => 'Agregar página',
+                            'list' => 'Lista páginas']
                   ],
 
 

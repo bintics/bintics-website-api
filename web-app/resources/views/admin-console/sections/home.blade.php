@@ -4,28 +4,35 @@
 
 @section('content')
 	<h2>{!! trans('admin.sections.title') !!}</h2>
-	<a href="{!! route('admin.sections.new') !!}">{!! trans('admin.sections.new') !!}</a>
+	<!--<a href="{!! route('admin.sections.new') !!}">{!! trans('admin.sections.new') !!}</a>-->
 	@if($sections->count() > 0)
 		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>{!! trans('admin.sections.field.name') !!}</th>
+					<th>{!! trans('admin.created_at') !!}</th>
+					<th>{!! trans('admin.updated_at') !!}</th>
 					<th>{!! trans('admin.actions') !!}</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach($sections as $section)
 					<tr>
-						<td>{!! $section->name !!}</td>
+						<td>{!! $section->name !!} - {!! $section->sections->count() !!} {!! trans('admin.sections.sub.title') !!}</td>
 						<td>{!! $section->created_at !!}</td>
 						<td>{!! $section->updated_at !!}</td>
 						<td>
+							<a href="{!! route('admin.sections.sub.home', ['id' => $section->id]) !!}" class="btn btn-primary btn-xs">
+								{!! trans('admin.sections.sub.list') !!}
+							</a>
+							<!--
 							<a href="{!! route('admin.sections.edit', ['id' => $section->id]) !!}" class="btn btn-primary btn-xs">
 								{!! trans('admin.edit') !!}
 							</a>
 							{!! Form::open(['route' => ['admin.sections.delete', $section->id], 'style' => 'display: inline;']) !!}
 								{!! Form::submit(trans('admin.delete'), ['class' => 'btn btn-danger btn-xs']) !!}
 							{!! Form::close() !!}
+						-->
 						</td>
 					</tr>
 				@endforeach
