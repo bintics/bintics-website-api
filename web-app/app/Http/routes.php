@@ -16,5 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('test-route', function () {
-    return 'test-route';
+    return 'test de rutas';
 });
