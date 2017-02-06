@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 class HomeController extends Controller {
 
 	public function getIndex() {
-		return redirect()->route('client.courses.free');
+		return view('clients.home');
 	}
 
 }
