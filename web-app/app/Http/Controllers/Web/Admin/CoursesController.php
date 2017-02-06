@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\AdminConsole;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -7,7 +7,7 @@ use App\Models\Currency;
 use App\Models\Course;
 use App\Models\FormatCourse;
 
-class AdminCoursesController extends Controller {
+class CoursesController extends Controller {
 
 	public function getIndex() {
 		$courses = Course::paginate(10);

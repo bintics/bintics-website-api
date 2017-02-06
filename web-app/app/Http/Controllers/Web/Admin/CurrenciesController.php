@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\AdminConsole;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Currency;
 
-class AdminCurrenciesController extends Controller {
+class CurrenciesController extends Controller {
 
 	public function getIndex() {
 		$currencies = Currency::paginate(10);

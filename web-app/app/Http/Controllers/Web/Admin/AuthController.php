@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\AdminConsole;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use App\Models\User;
 use Hash;
 use Auth;
 
-class AdminConsoleAuthController extends Controller {
+class AuthController extends Controller {
 
 	public function getLogin() {
 		$count = User::count();

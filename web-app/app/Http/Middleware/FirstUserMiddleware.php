@@ -23,6 +23,7 @@ class FirstUserMiddleware
             $usuario->password = Hash::make('masterkey');
             $usuario->save();
         }
-        return $next($request);
+        $response = $next($request);
+        return $response;
     }
 }

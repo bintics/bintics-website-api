@@ -14,7 +14,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespaceWeb = 'App\Http\Controllers\Web';
+    protected $namespaceApi = 'App\Http\Controllers\Api';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -52,10 +53,41 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes(Router $router)
     {
-        $router->group([
-            'namespace' => $this->namespace, 'middleware' => 'web',
-        ], function ($router) {
-            require app_path('Http/routes.php');
+        /**
+         *  Web
+         */
+        $router->group(['middleware' => ['web']], function ($router) {
+
+            $npwClient = $this->namespaceWeb . '\Client';
+            $npwAdmin = $this->namespaceWeb . '\Admin';
+
+            $router->group(['namespace' => $npwClient], function() {
+                require app_path('Http/Routes/routes-web-client.php');
+            });
+
+            $router->get('admin-console-login', ['as' => 'admin.login', 'uses' => $npwAdmin . '\AuthController@getLogin']);
+            $router->post('admin-console-login', ['middleware' => ['first.user'], 'uses' => $npwAdmin . '\AuthController@postLogin']);
+            $router->get('admin-console-logout', ['as' => 'admin.logout', 'uses' => $npwAdmin . '\AuthController@getLogout']);
+            $router->group(['namespace' => $npwAdmin, 'prefix' => 'admin-console', 'middleware' => ['auth']], function() {
+                require app_path('Http/Routes/routes-web-admin.php');
+            });
+        });
+
+
+        /**
+         *  API
+         */
+        $router->group(['prefix' => 'api', 'middleware' => ['web']], function($router) {
+            $npwClient = $this->namespaceApi . '\Client';
+            $npwAdmin = $this->namespaceApi . '\Admin';
+
+            $router->group(['namespace' => $npwClient, 'prefix' => 'client'], function($router) {
+                require app_path('Http/Routes/routes-api-client.php');
+            });
+
+            $router->group(['namespace' => $npwAdmin, 'prefix' => 'admin', 'middleware' => ['auth']], function($router) {
+                require app_path('Http/Routes/routes-api-admin.php');
+            });
         });
     }
 }

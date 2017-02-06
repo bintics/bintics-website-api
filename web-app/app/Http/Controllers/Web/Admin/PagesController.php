@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\AdminConsole;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 
-class AdminPagesController extends Controller {
+class PagesController extends Controller {
 
 	public function getIndex() {
 		$formatCourses = Page::paginate(10);

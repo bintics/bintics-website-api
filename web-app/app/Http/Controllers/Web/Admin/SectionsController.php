@@ -1,12 +1,12 @@
 <?php
-namespace App\Http\Controllers\AdminConsole;
+namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use Auth;
 
-class AdminSectionsController extends Controller {
+class SectionsController extends Controller {
 
 	public function getIndex() {
 		$this->checkDefaultSections();
