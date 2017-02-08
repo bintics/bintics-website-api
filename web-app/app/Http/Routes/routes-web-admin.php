@@ -21,6 +21,9 @@ Route::group(['prefix' => 'sections'], function() {
 	Route::get('{section}/sub-sections', ['as' => 'admin.sections.sub.home', 'uses' => 'SectionsController@getHomeSubSection']);
 	Route::get('{section}/add-sub-section', ['as' => 'admin.sections.sub.add', 'uses' => 'SectionsController@getAddSubSection']);
 	Route::post('add-sub-section', ['as' => 'admin.sections.sub.add_post', 'uses' => 'SectionsController@postNewSubSection']);
+
+	Route::get('{section}/add-page', ['as' => 'admin.sections.add.page', 'uses' => 'SectionsController@getAddPageToSection']);
+	Route::post('{section}/add-page', ['uses' => 'SectionsController@postAddPageToSection']);
 });
 	
 

@@ -8,6 +8,9 @@
 		<label for="name">{!! trans('admin.sections.sub.field.name') !!}</label>
 		{!! Form::text('name', '', ['class' => 'form-control', 'id' => 'name']) !!}
 		{!! Form::hidden('parent_id', $parent->id, ['class' => 'form-control', 'id' => 'name']) !!}
+
+		<label for="foreign_url">{!! trans('admin.sections.field.foreign_url') !!}</label>
+		{!! Form::text('foreign_url', '', ['class' => 'form-control', 'id' => 'foreign_url']) !!}
 		{!! Form::submit(trans('admin.save'), ['class' => 'btn btn-primary btn-block']) !!}
 	{!! Form::close() !!}
 @endsection

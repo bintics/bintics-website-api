@@ -89,7 +89,17 @@ class SectionsController extends Controller {
 		$_section->name = $request->input('name');
 		$_section->user_id = Auth::user()->id;
 		$_section->parent_section_id = $request->input('parent_id');
+		$_section->foreign_url = $request->input('foreign_url');
 		$_section->save();
+		return redirect()->route('admin.sections.sub.home', ['id' => $request->input('parent_id')]);
+	}
+
+	public function getAddPageToSection(Section $section) {
+		return view('admin-console.sections.newpage', ['parent' => $section]);
+	}
+
+	public function postAddPageToSection(Section $section) {
+		
 		return redirect()->route('admin.sections.sub.home', ['id' => $request->input('parent_id')]);
 	}
 }

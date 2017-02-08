@@ -24,7 +24,7 @@
 					<!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
 					@foreach($nav_top_items as $section)
 					<li>
-						<a href="#">
+						<a href="{!! (is_null($section->foreign_url) ? '#' : $section->foreign_url)!!}">
 							{!! $section->name !!}
 						</a>
 					</li>

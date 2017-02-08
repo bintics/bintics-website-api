@@ -14,6 +14,10 @@
 		</a>
 	@endif
 	|
+	<a href="{!! route('admin.sections.add.page', ['id' => $parent->id]) !!}">
+		{!! trans('admin.pages.sub.add') !!}
+	</a>
+	|
 	<a href="{!! route('admin.sections.sub.add', ['id' => $parent->id]) !!}">
 		{!! trans('admin.sections.sub.add') !!}
 	</a>
