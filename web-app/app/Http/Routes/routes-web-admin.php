@@ -24,6 +24,17 @@ Route::group(['prefix' => 'sections'], function() {
 	Route::get('{section}/add-page', ['as' => 'admin.sections.add.page', 'uses' => 'SectionsController@getAddPageToSection']);
 	Route::post('{section}/add-page', ['uses' => 'SectionsController@postAddPageToSection']);
 });
+
+/*----------------------------*/
+//		Secciones
+/*----------------------------*/
+Route::group(['prefix' => 'menu'], function() {
+	Route::get('/', ['as' => 'admin.menu.home', 'uses' => 'MenusController@getIndex']);
+	Route::post('/', ['uses' => 'MenusController@postNew']);
+
+	Route::get('/{menu}', ['as' => 'admin.menu.edit', 'uses' => 'MenusController@getEdit']);
+	Route::post('/{menu}', ['uses' => 'MenusController@postEdit']);
+});
 	
 
 /*----------------------------*/

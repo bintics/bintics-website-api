@@ -28,6 +28,9 @@
 					</li>
 
 					<li class="dropdown-header">{!! trans('admin.sections.title') !!}</li>
+					<li class="{!! (route('admin.menu.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/menu*') ? 'active' : '')!!}">
+						<a href="{!! route('admin.menu.home') !!}">{!! trans('admin.menu.title') !!}</a>
+					</li>
 					<li class="{!! (route('admin.sections.home') == (URL::to('/') . '/' . Request::path()) || Request::is('admin-console/sections*') ? 'active' : '')!!}">
 						<a href="{!! route('admin.sections.home') !!}">{!! trans('admin.sections.title') !!}</a>
 					</li>

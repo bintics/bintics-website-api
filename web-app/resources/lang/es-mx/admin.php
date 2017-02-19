@@ -77,6 +77,11 @@ return [
                             'field' => ['name' => 'Nombre de la subsección']
                           ]
                   ],
+    'menu' =>  ['title' => 'Menús',
+                'new' => 'Nueva menú',
+                'edit' => 'Editar menú',
+                'field' => ['name' => 'Nombre del menú']
+                  ],
     'pages' => ['title' => 'Página',
                   'new' => 'Nueva página',
                   'edit' => 'Editar página',
