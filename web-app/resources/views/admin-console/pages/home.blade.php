@@ -19,7 +19,13 @@
 			<tbody>
 				@foreach($pages as $page)
 					<tr>
-						<td>{!! $page->title !!}</td>
+						<td>
+						@if($page->as_foreign_url)
+							{!! ($page->title == '' ? $page->foreign_url : $page->title) !!}
+						@else
+							{!! $page->title == '' ? trans('admin.pages.field.withouttitle') : $page->title !!}
+						@endif
+						</td>
 						<td>{!! (is_null($page->menu) ? 'Ninguno' : $page->menu->name) !!}</td>
 						<td>{!! $page->created_at !!}</td>
 						<td>{!! $page->updated_at !!}</td>

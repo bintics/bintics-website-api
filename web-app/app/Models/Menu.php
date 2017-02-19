@@ -13,7 +13,7 @@ class Menu extends Model
     }
 
     public function pages() {
-    	return $this->hasMany('App\Models\Menu', 'menu_name', 'name');    	
+    	return $this->hasMany('App\Models\Page', 'menu_id', 'id');
     }
 
 }

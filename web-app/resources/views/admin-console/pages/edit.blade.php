@@ -12,6 +12,15 @@
 			</label>
 		</div>
 
+		<div class="checkbox">
+			<label>
+				{!! Form::checkbox('asurl', 1, $page->as_foreign_url, ['id' => 'url']) !!}
+				{!! trans('admin.pages.field.asurl') !!}
+			</label>
+		</div>
+		<label for="url">{!! trans('admin.pages.field.url') !!}</label>
+		{!! Form::text('url', $page->foreign_url, ['class' => 'form-control', 'id' => 'url']) !!}
+
 		<label for="menu">{!! trans('admin.pages.field.menu') !!}</label>
 		<select id="menu" name="menu_id" class="form-control">
 			<option value="0">[Ninguno]</option>

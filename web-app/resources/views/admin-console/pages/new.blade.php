@@ -11,6 +11,15 @@
 				{!! trans('admin.pages.field.public') !!}
 			</label>
 		</div>
+
+		<div class="checkbox">
+			<label>
+				{!! Form::checkbox('url', 1, false, ['id' => 'url']) !!}
+				{!! trans('admin.pages.field.asurl') !!}
+			</label>
+		</div>
+		<label for="url">{!! trans('admin.pages.field.url') !!}</label>
+		{!! Form::text('url', '', ['class' => 'form-control', 'id' => 'url']) !!}
 		
 		<label for="menu">{!! trans('admin.pages.field.menu') !!}</label>
 		<select id="menu" name="menu_id" class="form-control">

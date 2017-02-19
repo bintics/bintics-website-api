@@ -25,7 +25,7 @@ class PagesController extends Controller {
 		if($menu_id > 0)
 			$page->menu_id = $menu_id;
 
-		$page->public = $request->input('public');
+		$page->public = $request->input('public', false);
 		$page->title = $request->input('title');
 		$page->sub_title = $request->input('subtitle');
 		$page->content = $request->input('content');
@@ -46,7 +46,10 @@ class PagesController extends Controller {
 		else
 			$page->menu_id = null;		
 
-		$page->public = $request->input('public');
+		$page->public = $request->input('public', false);
+		$page->as_foreign_url = $request->input('asurl', false);
+		$page->foreign_url = $request->input('url');
+		
 		$page->title = $request->input('title');
 		$page->sub_title = $request->input('subtitle');
 		$page->content = $request->input('content');

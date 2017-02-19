@@ -80,13 +80,18 @@ return [
     'menu' =>  ['title' => 'Menús',
                 'new' => 'Nueva menú',
                 'edit' => 'Editar menú',
-                'field' => ['name' => 'Nombre del menú']
+                'field' => ['name' => 'Nombre del menú',
+                            'pages' => 'Páginas'
+                            ]
                   ],
     'pages' => ['title' => 'Páginas',
                   'new' => 'Nueva página',
                   'edit' => 'Editar página',
                   'field' => ['title' => 'Título de la página',
+                              'withouttitle' => 'Sin título',
                               'public' => 'Publicar',
+                              'asurl' => 'Mostrar como URL',
+                              'url' => 'URL',
                               'menu' => 'Menú al que pertenece',
                               'subtitle' => 'Sub título',
                               'content' => 'Descripción'],

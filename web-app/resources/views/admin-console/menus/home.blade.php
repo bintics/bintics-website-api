@@ -14,6 +14,7 @@
 			<thead>
 				<tr>
 					<th>{!! trans('admin.menu.field.name') !!}</th>
+					<th>{!! trans('admin.menu.field.pages') !!}</th>
 					<th>{!! trans('admin.created_at') !!}</th>
 					<th>{!! trans('admin.updated_at') !!}</th>
 					<th>{!! trans('admin.actions') !!}</th>
@@ -23,6 +24,7 @@
 				@foreach($menus as $menu)
 					<tr>
 						<td>{!! $menu->name !!}</td>
+						<td>{!! $menu->pages()->count() !!}</td>
 						<td>{!! $menu->created_at !!}</td>
 						<td>{!! $menu->updated_at !!}</td>
 						<td>

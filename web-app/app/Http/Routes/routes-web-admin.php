@@ -45,6 +45,7 @@ Route::group(['prefix' => 'pages'], function() {
 	Route::get('/', ['as' => 'admin.pages.home', 'uses' => 'PagesController@getIndex']);
 	Route::get('new', ['as' => 'admin.pages.new', 'uses' => 'PagesController@getNew']);
 	Route::post('new', ['uses' => 'PagesController@postNew']);
+
 	Route::get('{page}/edit', ['as' => 'admin.pages.edit', 'uses' => 'PagesController@getEdit']);
 	Route::post('{page}/edit', ['uses' => 'PagesController@postEdit']);
 	Route::post('{page}/delete', ['as' => 'admin.pages.delete', 'uses' => 'PagesController@postDelete']);
