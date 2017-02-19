@@ -22,21 +22,22 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-					@foreach($nav_top_items as $section)
-					<li>
-						<a href="{!! (is_null($section->foreign_url) ? '#' : $section->foreign_url)!!}">
-							{!! $section->name !!}
-						</a>
-					</li>
-					@endforeach
+					@if(!is_null($main_menu))
+						@foreach($main_menu->pages as $page)
+						<li>
+							@if($page->public)
+								@if($page->as_foreign_url)
+									<a href="{!! $page->foreign_url !!}">{!! $page->title !!}</a>
+								@else
+									<a href="{!! route('client.page', [str_slug($page->title), $page->id]) !!}">
+										{!! $page->title !!}
+									</a>
+								@endif
+							@endif
+						</li>
+						@endforeach
+					@endif
 					<li><a href="{!! route('client.courses.free') !!}">Cursos Gratuitos</a></li>
-					@foreach($nav_top_pages as $page)
-					<li>
-						<a href="{!! route('client.page', [str_slug($page->title), $page->id]) !!}">
-							{!! $page->title !!}
-						</a>
-					</li>
-					@endforeach
 				</ul>
 			</div>
 		</div>

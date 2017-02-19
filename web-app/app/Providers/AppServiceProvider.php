@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Section;
+use App\Models\Menu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,20 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $nav_top_items = $this->getNavItems('NavTop');
-        view()->share('nav_top_items', $nav_top_items);
-
-        $nav_top_pages = $this->getNavPages('NavTop');
-        view()->share('nav_top_pages', $nav_top_pages);
-
-        $nav_left_items = $this->getNavItems('NavLeft');
-        view()->share('nav_left_items', $nav_left_items);
-
-        $nav_right_items = $this->getNavItems('NavRight');
-        view()->share('nav_right_items', $nav_right_items);
-
-        $nav_bottom_items = $this->getNavItems('NavBottom');
-        view()->share('nav_bottom_items', $nav_bottom_items);
+        $main_menu = Menu::where('name','MainMenu')->first();
+        view()->share('main_menu', $main_menu);
     }
 
     private function getNavItems($name) {

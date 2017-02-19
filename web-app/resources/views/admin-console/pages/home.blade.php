@@ -11,6 +11,7 @@
 				<tr>
 					<th>{!! trans('admin.pages.field.title') !!}</th>
 					<th>{!! trans('admin.pages.field.menu') !!}</th>
+					<th>{!! trans('admin.pages.published') !!}</th>
 					<th>{!! trans('admin.created_at') !!}</th>
 					<th>{!! trans('admin.updated_at') !!}</th>
 					<th>{!! trans('admin.actions') !!}</th>
@@ -27,6 +28,7 @@
 						@endif
 						</td>
 						<td>{!! (is_null($page->menu) ? 'Ninguno' : $page->menu->name) !!}</td>
+						<td>{!! ($page->public ? 'Si' : 'No') !!}</td>
 						<td>{!! $page->created_at !!}</td>
 						<td>{!! $page->updated_at !!}</td>
 						<td>

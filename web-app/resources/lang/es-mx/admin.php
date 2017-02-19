@@ -87,6 +87,7 @@ return [
     'pages' => ['title' => 'Páginas',
                   'new' => 'Nueva página',
                   'edit' => 'Editar página',
+                  'published' => 'Publicado',
                   'field' => ['title' => 'Título de la página',
                               'withouttitle' => 'Sin título',
                               'public' => 'Publicar',
