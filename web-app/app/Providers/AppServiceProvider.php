@@ -17,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
         $nav_top_items = $this->getNavItems('NavTop');
         view()->share('nav_top_items', $nav_top_items);
 
+        $nav_top_pages = $this->getNavPages('NavTop');
+        view()->share('nav_top_pages', $nav_top_pages);
+
         $nav_left_items = $this->getNavItems('NavLeft');
         view()->share('nav_left_items', $nav_left_items);
 
@@ -30,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
     private function getNavItems($name) {
         $nav = Section::where('name', $name)->first();
         $nav_items = is_null($nav) || is_null($nav->sections) ? [] : $nav->sections;
+        return $nav_items;
+    }
+
+    private function getNavPages($name) {
+        $nav = Section::where('name', $name)->first();
+        $nav_items = !is_null($nav) && !is_null($nav->pages) ? $nav->pages : [];
         return $nav_items;
     }
 

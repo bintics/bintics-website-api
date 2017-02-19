@@ -66,4 +66,31 @@
 	@else
 		<div class="alert alert-info">{!! trans('admin.no_results') !!}</div>
 	@endif
+
+
+
+	@if($parent->pages->count() > 0)
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>{!! trans('admin.sections.field.name') !!}</th>
+					<th>{!! trans('admin.created_at') !!}</th>
+					<th>{!! trans('admin.updated_at') !!}</th>
+					<th>{!! trans('admin.actions') !!}</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($parent->pages as $section)
+					<tr>
+						<td>{!! $section->title !!}</td>
+						<td>{!! $section->created_at !!}</td>
+						<td>{!! $section->updated_at !!}</td>
+					</tr>
+				@endforeach
+			</tbody>
+		</table>
+		
+	@else
+		<div class="alert alert-info">{!! trans('admin.no_results') !!}</div>
+	@endif
 @endsection

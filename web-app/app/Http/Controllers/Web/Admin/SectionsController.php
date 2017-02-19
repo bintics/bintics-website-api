@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Section;
+use App\Models\Page;
 use Auth;
 
 class SectionsController extends Controller {
@@ -98,8 +99,14 @@ class SectionsController extends Controller {
 		return view('admin-console.sections.newpage', ['parent' => $section]);
 	}
 
-	public function postAddPageToSection(Section $section) {
-		
+	public function postAddPageToSection(Section $section, Request $request) {
+		$page = new Page();
+		$page->user_id = Auth::user()->id;
+		$page->section_id = $section->id;
+		$page->title = $request->input('title');
+		$page->sub_title = $request->input('subtitle');
+		$page->content = $request->input('container');
+		$page->save();
 		return redirect()->route('admin.sections.sub.home', ['id' => $request->input('parent_id')]);
 	}
 }

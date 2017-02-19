@@ -56,6 +56,10 @@ class RouteServiceProvider extends ServiceProvider
         /**
          *  Web
          */
+        $router->get('admin-console', function() {
+            return redirect()->route('admin.home');
+        });
+        
         $router->group(['middleware' => ['web']], function ($router) {
 
             $npwClient = $this->namespaceWeb . '\Client';
@@ -65,9 +69,10 @@ class RouteServiceProvider extends ServiceProvider
                 require app_path('Http/Routes/routes-web-client.php');
             });
 
-            $router->get('admin-console-login', ['as' => 'admin.login', 'uses' => $npwAdmin . '\AuthController@getLogin']);
-            $router->post('admin-console-login', ['middleware' => ['first.user'], 'uses' => $npwAdmin . '\AuthController@postLogin']);
-            $router->get('admin-console-logout', ['as' => 'admin.logout', 'uses' => $npwAdmin . '\AuthController@getLogout']);
+            $router->get('admin-console/login', ['as' => 'admin.login', 'uses' => $npwAdmin . '\AuthController@getLogin']);
+            $router->post('admin-console/login', ['middleware' => ['first.user'], 'uses' => $npwAdmin . '\AuthController@postLogin']);
+            $router->get('admin-console/logout', ['as' => 'admin.logout', 'uses' => $npwAdmin . '\AuthController@getLogout']);
+            
             $router->group(['namespace' => $npwAdmin, 'prefix' => 'admin-console', 'middleware' => ['auth']], function() {
                 require app_path('Http/Routes/routes-web-admin.php');
             });

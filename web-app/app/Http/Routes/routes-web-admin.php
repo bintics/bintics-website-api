@@ -1,7 +1,6 @@
 <?php
 
-
-Route::get('/', ['as' => 'admin.home', 'uses' => 'HomeController@getIndex']);
+Route::get('home', ['as' => 'admin.home', 'uses' => 'HomeController@getIndex']);
 
 Route::group(['prefix' => 'users'], function() {
 	Route::get('/', ['as' => 'admin.users', 'uses' => 'UsersController@getIndex']);

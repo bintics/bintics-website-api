@@ -5,7 +5,7 @@
 @section('content')
 Se agregará pagina a esta seccion
 	<h2>{!! trans('admin.sections.page.title') !!} - {!! $parent->name !!}</h2>
-	{!! Form::open(['route' => ['admin.sections.new']]) !!}
+	{!! Form::open(['route' => ['admin.sections.add.page', $parent->id]]) !!}
 		<label for="title">{!! trans('admin.sections.page.field.title') !!}</label>
 		{!! Form::text('title', '', ['class' => 'form-control', 'id' => 'title']) !!}
 		<label for="subtitle">{!! trans('admin.sections.page.field.subtitle') !!}</label>

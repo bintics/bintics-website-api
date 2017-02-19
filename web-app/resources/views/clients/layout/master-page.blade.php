@@ -30,14 +30,20 @@
 					</li>
 					@endforeach
 					<li><a href="{!! route('client.courses.free') !!}">Cursos Gratuitos</a></li>
+					@foreach($nav_top_pages as $page)
+					<li>
+						<a href="{!! route('client.page', [str_slug($page->title), $page->id]) !!}">
+							{!! $page->title !!}
+						</a>
+					</li>
+					@endforeach
 				</ul>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container-fluid">
-		<h1 class="page-header">{!! trans('clients.title') !!}</h1>
-		<div class="col-md-10">
+		<div class="col-md-10 col-md-offset-1">
 			@yield('content')
 		</div>
 	</div>
