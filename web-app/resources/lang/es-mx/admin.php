@@ -82,11 +82,14 @@ return [
                 'edit' => 'Editar menú',
                 'field' => ['name' => 'Nombre del menú']
                   ],
-    'pages' => ['title' => 'Página',
+    'pages' => ['title' => 'Páginas',
                   'new' => 'Nueva página',
                   'edit' => 'Editar página',
-                  'field' => ['title' => 'Nombre de la página',
-                              'description' => 'Descripción'],
+                  'field' => ['title' => 'Título de la página',
+                              'public' => 'Publicar',
+                              'menu' => 'Menú al que pertenece',
+                              'subtitle' => 'Sub título',
+                              'content' => 'Descripción'],
                   'sub' => ['title' => 'Páginas',
                             'add' => 'Agregar página',
                             'list' => 'Lista páginas']

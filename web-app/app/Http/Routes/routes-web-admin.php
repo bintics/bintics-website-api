@@ -26,7 +26,7 @@ Route::group(['prefix' => 'sections'], function() {
 });
 
 /*----------------------------*/
-//		Secciones
+//		Menú
 /*----------------------------*/
 Route::group(['prefix' => 'menu'], function() {
 	Route::get('/', ['as' => 'admin.menu.home', 'uses' => 'MenusController@getIndex']);
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'menu'], function() {
 /*----------------------------*/
 //		Páginas
 /*----------------------------*/
-/*
+
 Route::group(['prefix' => 'pages'], function() {
 	Route::get('/', ['as' => 'admin.pages.home', 'uses' => 'PagesController@getIndex']);
 	Route::get('new', ['as' => 'admin.pages.new', 'uses' => 'PagesController@getNew']);
@@ -49,7 +49,6 @@ Route::group(['prefix' => 'pages'], function() {
 	Route::post('{page}/edit', ['uses' => 'PagesController@postEdit']);
 	Route::post('{page}/delete', ['as' => 'admin.pages.delete', 'uses' => 'PagesController@postDelete']);
 });
-*/
 
 
 /*----------------------------*/

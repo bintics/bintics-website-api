@@ -4,42 +4,58 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
+use App\Models\Menu;
+use Auth;
 
 class PagesController extends Controller {
 
 	public function getIndex() {
-		$formatCourses = Page::paginate(10);
-		return view('admin-console.pages.home', ['formatCourses' => $formatCourses]);
+		$pages = Page::paginate(10);
+		return view('admin-console.pages.home', ['pages' => $pages]);
 	}
 
 	public function getNew() {
-		return view('admin-console.pages.new');
+		$menus = Menu::all();
+		return view('admin-console.pages.new', ['menus' => $menus]);
 	}
 
 	public function postNew(Request $request) {
-		$format = new Page();
-		$format->name = $request->input('name');
-		$format->save();
-		return redirect()->route('admin.format_courses.home');
+		$page = new Page();
+		$menu_id = $request->input('menu_id');
+		if($menu_id > 0)
+			$page->menu_id = $menu_id;
+
+		$page->public = $request->input('public');
+		$page->title = $request->input('title');
+		$page->sub_title = $request->input('subtitle');
+		$page->content = $request->input('content');
+		$page->user_id = Auth::user()->id;
+		$page->save();
+		return redirect()->route('admin.pages.home');
 	}
 
-	public function getEdit(Page $formatCourse) {
-		return view('admin-console.pages.edit', ['formatCourse' => $formatCourse]);
+	public function getEdit(Page $page) {
+		$menus = Menu::all();
+		return view('admin-console.pages.edit', ['page' => $page, 'menus' => $menus]);
 	}
 
-	public function postEdit(Page $formatCourse, Request $request) {
-		$name = $request->input('name');
-		$f = Page::where('name', $name)->first();
-		if(is_null($f)) {
-			$formatCourse->name = $name;
-			$formatCourse->save();
-			return redirect()->route('admin.format_courses.home');
-		}
-		return redirect()->back();
+	public function postEdit(Page $page, Request $request) {
+		$menu_id = $request->input('menu_id');
+		if($menu_id > 0)
+			$page->menu_id = $menu_id;
+		else
+			$page->menu_id = null;		
+
+		$page->public = $request->input('public');
+		$page->title = $request->input('title');
+		$page->sub_title = $request->input('subtitle');
+		$page->content = $request->input('content');
+		$page->save();
+		return redirect()->route('admin.pages.home');
 	}
 
-	public function postDelete(Page $formatCourse) {
-		$formatCourse->delete();
+	public function postDelete(Page $page) {
+		$page->delete();
 		return redirect()->back();
 	}
 

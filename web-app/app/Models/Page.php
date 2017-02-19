@@ -16,6 +16,10 @@ class Page extends Model
     	return $this->hasMany('App\Models\Page', 'id', 'parent_page_id');
     }
 
+    public function menu() {
+        return $this->belongsTo('App\Models\Menu', 'menu_id');
+    }
+
     public function parentPage() {
     	return $this->belongsTo('App\Models\Page', 'parent_page_id');
     }

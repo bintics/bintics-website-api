@@ -25,7 +25,6 @@ class MenusController extends Controller {
 
 	public function getEdit(Menu $menu) {
 		return view('admin-console.menus.edit', ['menu' => $menu]);
-		// return view('admin-console.menus.edit', ['menu' => $menu]);
 	}
 
 	public function postEdit(Menu $menu, Request $request) {
