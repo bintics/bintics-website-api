@@ -15,6 +15,7 @@ return [
     'site_name' => 'Bintics Solutions',
     'title' => 'Bintics Solutions',
     'details' => 'Detalles',
+    'maintenance' => 'Volveremos pronto.',
     'courses' => ['title' => 'Lista de cursos',
                   'available' => 'Cursos disponibles',
                   'not_found' => 'Curo no encontrado',
