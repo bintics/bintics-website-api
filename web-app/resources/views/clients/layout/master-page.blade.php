@@ -5,6 +5,15 @@
 	<title>@yield('title')</title>
 	{!! Html::style('bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
 	{!! Html::style('bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') !!}
+	<style type="text/css">
+		.carousel-inner img {
+		  margin: auto auto auto 10%;
+		  max-height: 300px;
+		}
+		.carousel-caption {
+			color: grey;
+		}
+	</style>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -43,6 +52,8 @@
 		</div>
 	</nav>
 
+	@yield('head-content')
+	
 	<div class="container-fluid">
 		<div class="col-md-10 col-md-offset-1">
 			@yield('content')
