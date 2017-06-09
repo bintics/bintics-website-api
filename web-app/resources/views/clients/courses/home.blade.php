@@ -23,7 +23,7 @@
 							</h5>
 							<p>{!! $course->short_description !!}</p>
 							<p class="text-center">
-								<a href="#" class="btn btn-primary" role="button">{!! trans('clients.courses.sign_up') !!}</a>
+								<a href="{!! route('client.courses.signon', [$course->id]) !!}" class="btn btn-primary" role="button">{!! trans('clients.courses.sign_up') !!}</a>
 								<a href="#" class="btn btn-default" role="button">{!! trans('clients.details') !!}</a>
 							</p>
 						</div>
